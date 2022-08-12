@@ -1,0 +1,62 @@
+@import "App1";  // by using import we can use another SCSS file
+$myColor-1: orange;
+$myColor-2: green;
+$myColor-3: blue;
+$myHeight: 200px;
+$myWidth: 200px;
+$myDisplay:flex;
+$justifyContent: space-around;
+$alignItems: center;
+$myMargin: 10% 0%;
+
+@mixin common{
+  background-color: red;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blue;
+}
+
+
+
+@mixin name($width,$height) {
+  width: $width;
+  height: $height;  
+}
+
+.App {
+  text-align: center;
+  display: $myDisplay;
+  justify-content: $justifyContent;
+  margin: $myMargin;
+}
+.div1{
+  $myColor-1:pink; //this is for local and we can change the saas variable value
+  background-color: $myColor-1;
+  @include common; // this is using if I want to use some common thing
+  @include name($myWidth,$myHeight); //here I can pass agruments
+}
+.div2{
+  $myColor-2: orange !global; // this color will be global for myColor-2 variable
+  background-color: $myColor-2;
+  height: $myHeight;
+  width: $myWidth;
+}
+.div3{
+  background-color: $myColor-3;
+  height: $myHeight;
+  width: $myWidth;
+}
+.div4{
+  background-color: $myColor-1;
+  height: $myHeight;
+  width: $myWidth;
+}
+.div5{
+  @extend .div4; // this is for if u want to extend from some other varibale like div4 
+}
+.div6{
+  background-color: $bodyColor1;
+  height: $myHeight;
+  width: $myWidth;
+
+}
